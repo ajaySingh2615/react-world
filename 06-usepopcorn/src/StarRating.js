@@ -15,12 +15,16 @@ export default function StarRating({
   color = "#fcc419",
   size = 48,
   className = "",
+  messages = [],
+  defaultRating = 0,
+  onSetRating,
 }) {
-  const [rating, setRating] = useState(0);
+  const [rating, setRating] = useState(defaultRating);
   const [temRating, setTemRating] = useState(0);
 
   function handleRating(rating) {
     setRating(rating);
+    onSetRating(rating);
   }
 
   const textStyle = {
@@ -45,7 +49,11 @@ export default function StarRating({
           />
         ))}
       </div>
-      <p style={textStyle}>{temRating || rating || ""}</p>
+      <p style={textStyle}>
+        {messages.length === maxRating
+          ? messages[temRating ? temRating - 1 : rating - 1]
+          : temRating || rating || ""}
+      </p>
     </div>
   );
 }
