@@ -1,9 +1,8 @@
-import PageNav from "../components/PageNav.jsx";
+import PageNav from "../components/PageNav/PageNav";
 
 function Product() {
   return (
     <div>
-      {" "}
       <PageNav /> Product page
     </div>
   );
